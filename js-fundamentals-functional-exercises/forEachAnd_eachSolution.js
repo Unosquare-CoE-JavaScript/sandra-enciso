@@ -1,10 +1,11 @@
 /******** .forEach() Function ***********/
 
-/*forEach and _.each Exercises*/
+/////forEach and _.each Exercises
 
-const _ = {};
+const _ = {}; //Declaring the object '_' (underscore) to assign new properties
 
-_.each = function(list, callback) {
+//Creating a new property 'each' in which uses a function to loop an array and for each element of the array executes the callback(parameter)
+_.each = function(list, callback) {//Parameters: an array or object, callback function
   if(Array.isArray(list)){
     //loop through array
     for(let i = 0; i < list.length; i++){
@@ -18,13 +19,13 @@ _.each = function(list, callback) {
     }
     //call the callback with a list item
   }
-  //celebrate
 }
 
+//Invoking the new property 'each' of the object '_' (underscore)
 _.each(['sally', 'georgie', 'porgie'], (name, i, list) => {
   if(list[i+1]){
     console.log(name, 'is younger than ', list[i+1]);
   } else {
     console.log(name, 'is the oldest');
   }
-})
+}); //sally is younger than georgie, georgie is younger than porgie, porgie is the oldest
