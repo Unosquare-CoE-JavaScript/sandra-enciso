@@ -1,9 +1,10 @@
 /******** .filter() Function ***********/
 
-/*.filter() Excercise*/
+//////.filter() Excercise
 
 const _ = {};
 
+//Creating a new property 'each' which executes a callback function for each element of an array or an object
 _.each = function(list, callback) {
   if(Array.isArray(list)){
     for(let i = 0; i < list.length; i++){
@@ -16,6 +17,11 @@ _.each = function(list, callback) {
   }
 }
 
+/*
+filter() calls a provided callbackFn function once for each element in an array, 
+and constructs a new array of all the values for which callbackFn returns a value that coerces to true
+*/
+//Filter works similar to map, but filter returns a new array filtering 
 _.filter = (array, cb) => {
   const storage = [];
   _.each(array, (item, i, list) => {
