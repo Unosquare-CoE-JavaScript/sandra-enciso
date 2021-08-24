@@ -1,11 +1,17 @@
-/******** PROPERTY ACCES ***********/
+/******** OBJECTS ***********/
 
-/*Destructuring*/
+/////Destructuring
+
+/*
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, 
+or properties from objects, into distinct variables.
+*/
 
 var obj = {first: 'Dan', last: 'Coelho'};
 var first = obj.first;
 var last = obj.last;
 
+//This is destructuration and works as the same as the code above
 const {name, weapon, room} = {"name": "Rusty", "room": "kitchen", "weapon":  "candlestick"};
 
 //Omit cerain values
