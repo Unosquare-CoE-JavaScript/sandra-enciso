@@ -1,17 +1,9 @@
 /******** Functions in Depth***********/
 
-/*Array-Like Object*/
-/*
-const from = arr => {
-  return Array.prototype.slice.call(arr)
-}*/
+/////Array-Like Object
 
-/******** Functions in Depth***********/
-
-/*Array-Like Object*/
-
-const add = function(a, b){
+const add = function(a, b){ //Declaring and assigning a function expression, this is an object, so we can declare others properties of this object
  	return a + b; 
 };
-add.example = 'testing 123!';
+add.example = 'testing 123!'; //Assigning a new property to add, 'example' is the name for the new property
 
