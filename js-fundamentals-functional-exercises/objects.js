@@ -7,13 +7,14 @@ Objects are data structures that contain related properties of an entity.
 Properties can be assigned and accessed using dot notation
 */
 
-/*Assignments with dots*/
+//Assignments with dots
 var person = {};
 person.name = "Mrs. White";
 
-/*var person = {
+//it works as the same as above
+var person = {
     "name": "Mrs. White"
-};*/
+};
 
 var who = person.name; // "Mrs. White"
 who; //
