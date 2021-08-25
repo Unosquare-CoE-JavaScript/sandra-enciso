@@ -1,3 +1,6 @@
+/*
+This is an recopilation of examples of how scope and closures works
+*/
 describe('Scope Exercises', function(){
     var ACTUAL;
     
@@ -189,21 +192,5 @@ describe('Scope Exercises', function(){
     
     
     
-  })();
-  // I think I saw Miss Scarlet saving
-  // a tray kitten that night. -Rev Green
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  })();  
   
