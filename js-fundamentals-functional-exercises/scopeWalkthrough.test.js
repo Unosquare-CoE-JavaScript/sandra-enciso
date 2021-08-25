@@ -1,3 +1,7 @@
+/*
+This is a recopilation of exercises which explains how scope and closure works
+*/
+
 describe('Scope Exercises', function(){
   var ACTUAL;
   
@@ -41,9 +45,9 @@ describe('Scope Exercises', function(){
     };
     firstFn();
     expect(function () {
-      ACTUAL =localToSirstFn;
+      ACTUAL = localToSirstFn;
     }).to.throw();
-    expect(ACTUAL === '???').to.be.true;
+    expect(ACTUAL === 'inner').to.be.true;
   })
   
 })
