@@ -1,6 +1,16 @@
 /********* HIGHER-ORDER FUNCTIONS AND CALLBACKS ********/
 
-/****** Empty Room Exercise ******/
+/////Empty Room Exercise
+
+/*
+A “higher-order function” is a function that accepts functions as parameters and/or returns a function.
+*/
+
+/*
+In the example below: the function expression notInRoom returns the objects (of newDevelopment array) which rooms[] objects appear as false.
+notInRoom uses each, map and reduce to filter
+And then uses an intersecction to find the rooms which nobody was inside
+*/
 
 const newDevelopment = [
     {
@@ -83,6 +93,16 @@ _.map = function(list, callback) { //map returns an array
   return storage;
 }
 
+/*
+_.reduce(list, iteratee, [memo], [context]) 
+reduce boils down a list of values into a single value.
+Memo is the initial state of the reduction, and each successive step of it should be returned by iteratee. 
+The iteratee is passed four arguments: the memo, then the value and index (or key) of the iteration, and finally a reference to the entire list.
+
+If no memo is passed to the initial invocation of reduce, the iteratee is not invoked on the first element of the list. 
+The first element is instead passed as the memo in the invocation of the iteratee on the next element in the list.
+*/
+
 _.reduce = function (list, cb, initial = list[0]) {//returns only a value
   //[1,2,3] //cb = sum;
   let memo = initial;
@@ -94,6 +114,9 @@ _.reduce = function (list, cb, initial = list[0]) {//returns only a value
   
 }
 
+/*
+Computes the list of values that are the intersection of all the arrays. Each value in the result is present in each of the arrays.
+*/
 _.intersection = () => {
   
 };
