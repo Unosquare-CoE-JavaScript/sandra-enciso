@@ -1,0 +1,35 @@
+/*
+  What is functional programming?
+  Breaking out your code into verbs or actions
+  Passing functions to functions, returning functions to functions, all functions
+  The porpouse is make pure functions so the code is easier to test and is more trustely
+  and make the code more readible
+*/
+
+/* OBJECTS AND ARRAYS DATA STRUCTURES*/
+1. Prperty Access
+
+primitive values get pass by value. While non-primitive values get pass by reference. So we have these pointers in memory for objects. 
+And that means, if you pass something, or reference a primitive value, it gets its own spot in memory every single time.
+While with functions and objects, you're often sharing the same place in memory. 
+And so if you're changing that, it can affect things in unusual ways if you aren't planning for that.
+
+2. Dot vs Bracket
+3. Destructuring
+
+Block Scoop
+
+4. Nesting + Loops
+
+_.each() / forEach
+* Iterates over a list of elements, passing the values to a function.
+* Each invocation of iterator, the function, is called woth three arguments:
+(element, index, list). if list is a JavaScript object, iterator's arguments will be (value, key list).
+
+_.map() / .map()
+*Produces a new array of values by mapping each value in list through a transformation function (iterator)
+*Each invocation of iterator is called with three argumrnts: (element, index, list).
+If list is a JavaScriot object, iterator's arguments will be (value, key, list)
+
+
+5. Nesting + Destructuring
