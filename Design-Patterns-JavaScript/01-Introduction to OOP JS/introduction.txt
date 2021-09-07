@@ -1,0 +1,33 @@
+Design patterns are common architectural approaches popularizzd by the Gang of Four Book(1994)
+
+Types of patterns
+
+*Creational
+-Builder
+-Factories
+    -Abstract Factories
+    -Factory Method
+-Prototype
+-Singleton
+
+*Structural
+-Adapter
+-Bridge
+-Composite
+-Decorator
+-Facade
+-Flyweight
+-Proxy
+
+*Behavioral
+-Chain of Responsibility
+-Command
+-Interpreter
+-Iterator
+-Mediator
+-Memento
+-Observer
+-State
+-Strategy
+-Template Method
+-Visitor
