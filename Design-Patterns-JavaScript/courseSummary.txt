@@ -1,0 +1,92 @@
+CREATIONAL
+
+Builder
+    Separe component for when object construction gests too complicated and you have to perform several steps, then you have to use the builder
+    Can create mutually cooperating sub-builders
+    Often has a fluent interface, which means that you return this as an end of the method, and this allows you to chain several builder calls together into a single statement.
+
+Factories
+    Is basically a static method which is like a constructor but more expressive than constructor. You can have lots of different factory methods with different names,
+    differently named arguments as well.
+    A separate class with factory methods is a Factory
+    Class hierarchies can have corresponding hierarchies of factories (Abstract Factory)
+
+Prototype
+    Creation of object from an existing object. Basically takes an existing prototype, making an exact copy of it, then by copy would mean deep copy, and then customizing that copy.
+    Requires either explicit deep copy or copy through serialization
+    Additional work required to preserve type
+
+Singleton
+    When you need to ensure just a single instance exists
+    Can return same object from constructor on every call
+    Direct dependence on a Singleton is dangerous
+
+STRUCTURAL
+
+Adapter
+    Converts the interface you get to the interface you need
+
+Bridge
+    Decouple abstraction from implementation
+
+Composite
+    Allows clients to treat individual objects and compositions of objects uniformly
+
+Decorator
+    Attach additional responsibilities to objects without modifying those objects or inheriting from them
+    Decorators are composable with each other
+
+Facade
+    Provide a single unified interface over a set of systems/interfaces.
+    It's made in many places beacuse you want people to be able to use your API easily
+
+Flyweight
+    Memory saving technique for avoiding duplication of data and lets you store a very large number of similar objects
+
+Proxy
+    Provide a surrogate object that forwards calls to the real object while performing additional functions
+    Eg. acces control, communication, logging, etc.
+
+BEHAVIORAL
+
+Chain of responsibility
+    Allow components to process information/events in a chain
+    Each element in the chain refers to next element or
+    Make a list and go through it. Event is essentially just a list of functions you can call
+
+Command
+    Encapsulate  request into a separate object
+    Good for audit, replay, undo/redo
+    Part of CQS/CQRS
+
+Interpreter
+    Transform textual input into object-oriented structures
+    Used by interpreters, compilers, static analysis tools, etc.
+    Compiler Theory is a separate branch of Computer Science
+
+Iterator
+    Provides an interface for accesing elements of an aggregate object
+    Objects can be made iterable (for loop)
+
+Mediator
+    Provides mediation services between two objects
+    Eg message passing, chat room
+
+Memento
+    Yields tokens representing system states
+    Tokens do not allow direct manipulation, but can be used in appropriate API's
+
+Observer
+    Allows notifications of changes/happenings in a component
+
+State
+    We model systems by having one of a possible states and transitions between these states
+    Such a system is called a state machine
+    Special frameworks exists to orchestrate state machines
+
+Strategy & Template method
+    Both define a skeleton algorithm with details filled in by implementor
+    Strategy uses ordinary composition, template method uses inheritance
+
+Visitor
+    Allows non-intrusive addition of functionality to hierarchies

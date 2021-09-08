@@ -1,0 +1,32 @@
+Design Patterns.
+They can be categorized into three different groups:
+
+*Structural patterns. They deal with structuring the relationship between different components or classes and forming new structures in order to provide new functionalities.
+Examples of Structural patterns are Composite, Adapter and Decorator.
+
+*Behavorial patterns. They help abstract common behavior between components into a separete entity which in turn, and your creational patterns.Examples: Command, Strategy and Observer.
+
+*creational patterns. They focus on class instantiation and making your life easier in order to create new entities. Examples Factory, Singleton, Abstract Factory.
+
+-Singleton
+It is a creational pattern because it ensures that no matter how many times you try to instantiate a class, you’ll only have one instance available.
+This is a great pattern to handle things such as database connections, since you’ll probably want to only handle one at a time, instead of having to re-connect on every user request.
+
+-Factory method
+Instead of directly working on top of the object we care about, this pattern only takes care of managing its creation.
+
+-Observer
+Heard about ReactJS? Based on it. What about event handlers in front-end JavaScript? Based on it.
+And how does it work? Essentially the pattern states that you have a set of observer objects, which will react to changes in the state of the observed entity.
+In order for this to happen, once a change is received at the observed end, it is responsible for notifying its observers by calling one of its methods.
+
+-Decorator
+The decorator pattern attemps to add behavior to an already existing object during run-time.
+In a way, you can think of this as dynamic inheritance because even though you’re not creating a new class in order to add the behavior,
+you’re creating a new object with the extended functionality.
+
+-Composite
+this pattern allows you to handle a set of similar components as a group, being able to execute a particular operation on them and aggregating the result from them all.
+The interesting part about this pattern though, is that it’s not a simple group of object, it can contain entities or groups of entities, 
+and each group can at the same time, contain more groups.
+So, consider using this pattern when it comes to dealing with multiple objects that follow the same interface.
