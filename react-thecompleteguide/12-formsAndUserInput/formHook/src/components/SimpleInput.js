@@ -1,0 +1,94 @@
+/*
+If you need the entered value after every keystroke, for exaple, for instant validation, then using the state is better.
+Another reason for using a state instead of a ref could be if you want to reset the entered input.
+*/
+
+/*
+if the input is invaid and was touched, we wanna show the user an error, otherwise we don't want to do that.
+ */
+import useInput from "../hooks/use-input";
+
+const SimpleInput = (props) => {
+  const { 
+    value: enteredName,
+    isValid: enteredNameIsValid, 
+    hasError: nameInputHasError, 
+    valueChangeHandler: nameChangeHandler, 
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput
+  } = useInput(value => value.trim() !== '');
+
+  const { 
+    value: enteredEmail,
+    isValid: enteredEmailIsValid, 
+    hasError: emailInputHasError, 
+    valueChangeHandler: emailChangeHandler, 
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmailInput
+  } = useInput(value => value.includes('@'));
+
+  let formIsValid = false;
+
+  if(enteredNameIsValid && enteredEmailIsValid){
+    formIsValid = true;
+  }
+
+  const formSubmissionHandler = e => {
+    e.preventDefault();
+    
+    if(!enteredNameIsValid){
+      return;
+    }
+
+    resetNameInput();
+
+    resetEmailInput();
+  }
+
+  const nameInputClasses = nameInputHasError 
+    ? 'form-control invalid' 
+    : 'form-control';
+
+  const emailInputClasses = emailInputHasError 
+    ? 'form-control invalid' 
+    : 'form-control';
+
+  return (
+    <form onSubmit={formSubmissionHandler}>
+      <div className={nameInputClasses}>
+        <label htmlFor='name'>Your Name</label>
+        <input 
+          /* ref={nameInputRef} */
+          type='text' 
+          id='name' 
+          onChange={nameChangeHandler}
+          onBlur={nameBlurHandler}
+          value={enteredName}
+        />
+        {nameInputHasError && <p className="error-text">Name must not be empty.</p>}
+      </div>
+      <div className={emailInputClasses}>
+        <label htmlFor='name'>Your E-Mail</label>
+        <input 
+          /* ref={nameInputRef} */
+          type='email' 
+          id='email' 
+          onChange={emailChangeHandler}
+          onBlur={emailBlurHandler}
+          value={enteredEmail}
+        />
+        {emailInputHasError && <p className="error-text">Please enter a valid email.</p>}
+      </div>
+      <div className="form-actions">
+        <button disabled={!formIsValid}>Submit</button>
+      </div>
+    </form>
+  );
+};
+
+export default SimpleInput;
+
+/*
+When to validate?
+When form is submitted,  when a input is losing focus, on every keystroke
+*/
