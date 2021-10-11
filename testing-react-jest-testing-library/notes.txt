@@ -1,0 +1,448 @@
+/*
+React testing library
+Not just a library, also a philosophy ('opinionated')
+Test your software the way users actually use it
+Not internal implementation
+
+Reat testing library
+    Provides virtual DOM for tests
+Jest
+    Tester runner that finds tests, run tests, determines whether tests pass or fail
+*/
+/*
+Create-react-app is a npm package
+Creates React applications with...
+Configuration
+Webpack and Babel
+Web server
+Testing Library!
+*/
+
+/* npm test runs jest in watch mode */
+
+/*
+jest-dom
+comes with create-react-app
+src/setupTest.js imports it before each test, makes matchers available
+DOM-based matchers
+    Examples: toBeVisible() or toBeChecked()
+*/
+
+/*
+Jest
+Is a React Testing Library and helps with
+    rendering components into virtual DOM
+    searching virtual DOM
+    Interacting with virtual DOM
+Test Runner
+    Finds tests, run them, make assertions.
+Jest
+    is recommended by Testing Library
+    comes with create-react-app
+npm test. runs an npm script that runs Jest in watch mode
+*/
+/*
+Jest watch mode
+Watch for changes in files since last commit
+Only run test related to these files
+No changes? No tests.
+    Type a to rumn all tests
+*/
+/*
+How does Jest Work?
+global test method has two arguments:
+    string description
+    test function
+Test fails if error is thrown when running function
+    assertions throw errors when expectation fails
+No error -> test pass
+    Empty test passes!
+*/
+/*
+Assertions job is to throw an error if your expectation fails
+*/
+/*
+What does React Testing Library Do?
+Creates a virtual Dom for testing
+    and utilities for interacting with DOM
+Allows testing without a browser
+
+Types of tests
+
+Unit tests
+    Test one unit of code in isolarion
+Integration tests
+    How multiple units work together
+Functional Tests
+    Tests a particular function of software (behavior)
+Acceptance/End-to-end (E2E) Tests
+    Use actual browser and server (Cypress, Selenium)
+*/
+
+/*
+Functional testing
+different mindset from unit testing
+
+Unit testing
+Isolated: mock dependencies, test internals. Very easy to pinpoint failures
+
+Further from how users interact with software
+More likely to break with refactoring
+
+Functional testing
+Include all relevant units, test behavior
+Close to how users interact with software
+Robust tests
+
+More difficult to debug failing tests
+*/
+
+/*
+TDD vs BDD
+
+Quick detour for BDD:Behavior-Driven Development
+Testing Library encourages testing behavior over implementation
+So shouldn't we be calling this BDD instead of TDD?
+    actually no.
+BDD is very explicity defined
+    involves collaboration berween lots of roles
+        developers, QA, business partners, etc
+    defines process for different groups to interact
+In this course, only developers, so TDD
+*/
+
+/*
+Accessibility and Finding Elements
+Testing Library recommends finding elements by accessibility handles
+create-react-app's example test uses getByText
+    ok for non-interactive elements
+    better: getByRole
+Can't find an element like a screen reader would?
+    Then your app isn't friendly to screen readers
+    
+*/
+/*
+In unit testing I musto to have only one assertion, that is only one aspect statement per test.
+For functional testing. you're often doing a series of actions.
+*/
+
+/*
+Unit Testing Functions
+Functions separate from components
+    Used by several components
+    Complex logic
+Unit test if
+    Complex logic difficult to test via functional tests
+    Too many edge cases
+
+When to unit test?
+For more complicated functions, unit test help with:
+    covering all posible edge cases
+    determining what caused functional test to fail
+Issue with functional tests:
+    high-level makes them resistant to refactors
+    high-level makes them difficult to diagnose
+*/
+
+/* REVIEW: SIMPLE APP
+Test interactivity using fireEvent
+jest-dom assertios:
+    toBeEnabled()
+    toBeDisabled()
+    toBeChecked()
+getByRole option {name:}
+Jest describe to group tests
+Unit testing fucntions
+*/
+
+/* 
+ESLint
+Is a popular linter for JavaScript
+Linting keeps code style consistent
+    specially for multi-eng projects
+Also catches errors in code
+    using variable before defining
+    importing from nonexisting file
+    etc
+
+Linter: anzalyzes static text and marks syntax that breaks rules
+Static: analyze code as written, not what happens when code is run
+
+Formatters (like prettier) automatically format code (idents, spacing)
+    example: spaces around curly braces
+        import {useEffect} from 'react';
+        import { useEffect } from 'react';
+
+Linters addres format and style
+    example: preferred assertion method
+        expect(checkbox).toHaveAttribte(checked);
+        expect(checkbox).toBeChecked();
+*/
+
+/*
+REVIEW: SETTING UP ESLINT AND PRETTIER
+
+ESLint:
+    npm install eslint-plugin-testing-library eslint-plugin-jest-dom
+    remove eslintConfig from package.json
+    Create .eslintrc.json and add standard confing
+    Install ESLint extension for VSCode
+    Create .vscode/settings.json and add standard config
+    Add .eslintcahce and .vscode to .gitignore
+
+Prettier:
+    Add settings to .vscode/settings.json
+    Install Prettier on VSCode
+*/
+
+/*
+SUNDAES ON DEMAND
+
+BACKDROP TO TEST...
+More complex user interactions
+    multiple form entry, moving through order phases
+Mouseover popup
+    test that element disappears from DOM
+Simularing server response
+    mock service worker
+Async app updates
+    awaiting DOM changes
+global state via context
+*/
+/*
+Code Organization
+Organize components by pages
+    test directory for each page
+    Jest will find and run any files that end in .test.js
+src/pages/summary
+    OrderSummary.jsx
+    SummaryForm.jsx
+src/pages/sumary/test
+    SummaryForm.test.jsx
+*/
+
+/*
+screen Query Methods
+command[All]ByQueryType
+command
+get: expect element to be in DOM
+query: expect element not to be in DOM
+find: expect elemento to appear async
+
+[All]
+(exclude) expect only one match
+(include) expect more than one match
+
+QueryType
+Role (most preferred)
+AltText (images)
+Text (display elements)
+Form elements
+    PlaceholderText
+    LabelText
+    DisplayValue
+*/
+
+/*
+Functional test generally dont involve the server
+
+Mock Service Worker
+
+Purpose:
+    intercept network calls
+    return specified responses
+Prevents network calls during tests
+Set up test conditions using server response
+
+Mock Service Worker Setup
+npm install msw
+Create handlers. These are functions that will determine what is returned for any particular url and route
+Create test server. To handle requests
+Make sure test server listens during all tests
+    reset after each test
+*/
+/*
+rest.get('http://localhost:3030/scoops', (req, res, ctx) => { })
+Handler Type: rest or graphql
+    HTTP method to mock: get, post, etc.
+        Full URL to mock
+            Response resolver function
+                req: request object
+                res: function to create response
+                ctx: utility to build response
+                https://mswjs.io/docs/basics/response-resolver
+*/
+/*
+The same request handlers can be shared between browser and Node environments.
+Since Service Workers cannot run in Node, the integration process is different depending on the environment.
+*/
+/*
+Our final task is to configure, create, react app so that mock service worker will intercept the network, network requests and return the responses
+that we've established in our handlers
+*/
+
+/*
+await findBy
+When you are waiting for something to appear asynchronously on the page, you musto use await findBy
+*/
+
+/*
+Review of "scoops" Testing
+Mock Service Worker mimics response from server
+    create handler
+    create server
+    update setup Test to listen for requests
+await findAllByRole for asynchronous DOM update of elements
+*/
+/*
+Server Errors: Planning
+Fill in that catch statement we left as TODO
+Display AlertBanner component if axios call throws error
+    instead of content from server
+Use simple react-bootstrap alert
+*/
+
+/*
+Review of alert testing
+Override mock service worker response for individual tests
+Misleading Unable to find role="alert" error
+Isolate file by typing p in Jest watch mode
+Isolate test within file with test.only or test.skip
+waitFor for tests where await findBy* isnt enough
+*/
+
+/*
+Context File
+Kent C. Dodds pattern to set up context with embedded state
+*/
+
+/*
+Review of Tests
+getByTest to find total
+    exact option set to false
+number inputs
+    await and findBy (comming from server async)
+    spinbutton role
+    userEvent.clear to clear existing text
+    userEvent.type to enter number
+wrapper option to render to apply context provider
+Redefine Testing Library render to access universally
+*/
+
+/*
+Black box test (not consider implementation)
+*/
+/*
+Note: {exact: false} is not an option for *byRole
+    Either use *byRole and regular expression for name option, or
+        screen.getByRole('heading', {name: /grand total: \$/i});
+    *byText and {exact: false}
+        screen.getByText('Grand total: $', {exact: false});
+*/
+/*
+Not recommended:
+Skip auto cleanup
+at the end of every test, testing library does an automatic cleanup, which includes unmounting any components from the test
+Not possible on a test-by-test basis
+
+Not Recomended:
+Mock useEffect to bypass server call
+    Not recommended, farther from production code path
+
+Recommended:
+Include in the beginning of a test that asserts on state changes
+    One that awaits state changes
+        happen on axios promise resolution
+*/
+/*
+Functional test generally...
+    test code processes, and not simply static cosmetics
+    test elements that might change with future coding
+*/
+
+/*
+What to Test
+"Happy path" (aka "Happy Day" or "Golden Path") test
+    Test that execute customer flow without error
+For our app:
+    Create order
+    Accept terms and submit
+    Click "new order" on confimation page
+Dont need to test different combinations of order
+    Covered in order page testing
+*/
+
+/*
+New Handler
+POST order to server
+    implementation: call POST via useEffect in OrderConfirmation
+        makeup the format of the data you sent to the server or you can send no data,
+        server simply generates random order number and sends it back as JSON 
+    mimic POST for order confirmation with Mock Service Worker
+*/
+/*
+Debungging Tips
+screen.debug()
+    print out in your test output what the screen or what the DOM looks like at that point
+Does getBy* fail when there a server call or other async action?
+    need to use await findBy*
+Read test error output carefully
+    dont get intimidated by huge walls of text
+    exactly which assertion is failing?
+    copy/paste errors into web search
+Try pre-written code to see whether your tests or code are the issue
+    Clearly not a viable option in real life, but useful tool while learning
+*/
+/*
+Order confirmation component
+State with orderNumber, starts ou null
+If orderNumber is null, display "Loading"
+    test "Loading" as optional practice
+useEfect to call axios when component mounts
+    Set orderNumber to axios response
+    Leave error as "TODO" (optional extra practice)
+
+Hints
+Keep orderPhase in App-level state
+    pass setter to top-level page components
+    orderPhase value determines which page component to display
+    for simplicity, wap everything in context provider
+        even though the confirmation page doesnt need it
+    buttons that update orderPhase state in pages
+        clicking button calls setter from prop
+    reset context Maps after clicking "New Order" button
+        context needs additional array item resetOrder
+*/
+
+/*
+Jest Mocks as Props
+Added a prop to top level page components
+    setOrderPhase
+Other components also have functions as props
+    updateItemCount for the ScoopOption/ToppingOption components
+May need to pass as prop when rendering in tests
+    TypeScript, PropTypes or other prop validators will require
+    Or will get called in tests, but doesnt matter for test
+        Testing that scoop count is invalid will call updateItemCount 
+*/
+/*
+How to pass when rendering component in test?
+jest.fn()
+    Jest mock function
+    Does not do anything
+    Merely a placeholder to avoid errors
+*/
+/*
+Standard Questions to Ask
+What to render?
+    whats the smallest component that encompasses tests=
+Do we need to pass any props?
+Do we need to wrap in, say, OrderDetailsProvider?
+    Does the provider get used? Is it already wrapped within ghe component?
+Where should the tests go?
+    which file? New file needed=
+What to test?
+    What queries and events=
+Do we need to await?
+    Is there anything async going on?
+*/
