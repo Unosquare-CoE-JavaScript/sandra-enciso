@@ -1,0 +1,121 @@
+@use "sass:math"; /*to use the math functions to calculate values*/
+/*importing our variables and typography style*/
+@import "_variables.scss";
+@import "typography.scss";
+
+/*
+Mixins allow you to define styles that can be re-used throughout your stylesheet.
+*/
+@mixin display-flex() {
+  /*this mixin uses flex vendor prefixes to ensure the correct behavior of our website*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+/*this mixin allows you to reuse a media query, you can pass the min-width and @content -> styles to apply */
+@mixin media-min-width($width) {
+  @media (min-width: $width) {
+    @content; /*pass dynamic content to then put it here using @content*/
+  }
+}
+
+/************
+ * Elements *
+ ************/
+html {
+  font-size: 94.75%;
+
+  @include media-min-width(40rem) {
+    /*with @include, we are calling our mixin that we defined above*/
+    font-size: 125%; //here you add the code you want to inyect it in the mixin function
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container {
+  @include display-flex(
+
+  ); /*with @include, we are calling our mixin that we defined above*/
+  flex: {
+    /*with SASS we can use nested properties like this*/
+    direction: column;
+    wrap: nowrap;
+  }
+  align-items: center;
+  padding: $size-default * 3 0; /*here we are making a calulation with a variable*/
+  box-sizing: border-box;
+  @media (min-width: 40rem) {
+    /*we can put media queries inside of our element to make easier to maintain*/
+    padding: 3rem 0;
+  }
+}
+
+.sass-section {
+  border: $border-default;
+  background: lighten(
+    map-get($colors, main),
+    72%
+  ); /*uses a function that ligths a color by a %*/
+  padding: $size-default * 2;
+  text-align: center;
+  width: 90%;
+  box-sizing: border-box;
+  @include media-min-width(40rem) {
+    /*we can put media queries inside of our element to make easier to maintain*/
+    width: 30rem;
+  }
+}
+
+.sass-introduction {
+  @extend .sass-section; /*using @extend .class-name, we can reuse styles that class contains */
+  box-shadow: $size-tiny $size-tiny math.div($size-tiny, 2) #ccc;
+  p {
+    margin: 0;
+  }
+}
+
+.sass-details {
+  @extend .sass-section; /*using @extend .class-name, we can reuse styles that class contains */
+  margin: $size-default * 2 0;
+}
+
+.section-header {
+  border-bottom: $border-default; /*uses the values stored in $border-default variable*/
+  h1 {
+    margin: 0 0 $size-default 0;
+  }
+}
+
+.documentation-links {
+  list-style: none;
+  margin: $size-default 0 0 0;
+  padding: 0;
+  @include display-flex(); /*uses the mixin*/
+  flex-direction: column;
+
+  li {
+    margin: $size-tiny 0;
+    background: white;
+  }
+
+  .documentation-link {
+    text-decoration: none;
+    color: map-get($colors, main);
+    display: block;
+    padding: $size-tiny;
+    border: $border-default;
+
+    &:hover, /*uses parent selector '&' to refer to the outer selector */
+    &:active {
+      color: white;
+      background: map-get($colors, secondary);
+      border-color: map-get($colors, secondary);
+    }
+  }
+}

@@ -1,0 +1,299 @@
+/*@import is used to import style rules from other style sheets. In this case, fonts from google fonts website*/
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,900");
+@import url("https://fonts.googleapis.com/css?family=Anton");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+/*universal selector (*) matches elements of any type.*/
+* {
+  /*box-sizing sets how the total width and height of an element is calculated.*/
+  box-sizing: border-box;
+  /*border-box value tells the browser to account for any border and padding in the values you specify for an element's width and height.
+  If you set an element's width to 100 pixels, that 100 pixels will include any border or padding you added, and the content box will shrink to absorb that extra width. */
+}
+
+html {
+  /* height property specifies the height of an element. In this case, the documents height is set to 100% of the viewport height */
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  display: grid; /*CSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of size, position, and layer, between parts of a control built from HTML primitives.*/
+  grid-template-rows: 3.5rem auto fit-content(8rem); /* defines the line names and track sizing functions of the grid rows.*/
+  grid-template-areas:
+    "header" /*specifies named grid areas, establishing the cells in the grid and assigning them names.*/
+    "main"
+    "footer";
+  /* padding-top: 3.5rem; */
+  height: 100%; /*the body height is set to 100% of the html element height */
+}
+
+main {
+  /* grid-row: 2 / 3; */
+  /*shorthand that pecifies a grid item’s size and location within a grid by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the edges of its grid area.*/
+  grid-area: main; /*this element is positioned between header and footer*/
+}
+
+.backdrop {
+  display: none; /*is not displayed*/
+  position: fixed; /*The element is removed from the normal document flow, and no space is created for the element in the page layout. 
+  It is positioned relative to the initial containing block established by the viewport,*/
+  opacity: 0;
+  top: 0; /*this element is positioned at 0 top and 0 left (left top corner) */
+  left: 0;
+  z-index: 100;
+  width: 100vw; /*uses the 100% of the width and height viewport*/
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s linear; /*this transtion is executed when backdrops is displayed */
+}
+
+.main-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #2ddf5c;
+  padding: 0.5rem 1rem;
+  z-index: 60;
+  display: flex; /*The element behaves like a block element and lays out its content according to the flexbox model. */
+  align-items: center; /*controls the alignment of items on the Cross Axis. */
+  justify-content: space-between; /*defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
+  space-between: the spacing between each pair of adjacent items is the same.*/
+}
+
+.toggle-button {
+  width: 3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle; /* sets vertical alignment of an inline, inline-block or table-cell box.*/
+  /*middle: Aligns the middle of the element with the baseline plus half the x-height of the parent.*/
+}
+
+.toggle-button:focus {
+  outline: none; /*the outline when it's  focused*/
+}
+
+.toggle-button__bar {
+  width: 100%;
+  height: 0.2rem;
+  background: black;
+  display: block; /*block value: The element generates a block element box, generating line breaks both before and after the element when in the normal flow.*/
+  margin: 0.6rem 0;
+}
+
+.main-header__brand {
+  color: #0e4f1f;
+  text-decoration: none; /*none decorator like underline for anchor tag elements is shown*/
+  font-weight: bold;
+  /* width: 20px; */
+}
+
+.main-header__brand img {
+  height: 2.5rem;
+  vertical-align: middle;
+  /* width: 100%; */
+}
+
+.main-nav {
+  display: none;
+}
+
+.main-nav__items {
+  margin: 0;
+  padding: 0;
+  list-style: none; /*sets the marker (such as a disc, character, or custom counter style) of a list item element.
+  In this case, none is displayed*/
+  display: flex; /*the items will be displayed as flex elements*/
+}
+
+.main-nav__item {
+  margin: 0 1rem;
+}
+
+.main-nav__item a, /*selects the anchor elements that are descendant of the class element main-nav__item*/
+.mobile-nav__item a {
+  text-decoration: none;
+  color: #0e4f1f;
+  font-weight: bold;
+  padding: 0.2rem 0;
+}
+
+.main-nav__item a:hover, /*selects the anchor elements that are descendant of the class element main-nav__item and has the hover state */
+.main-nav__item a:active {
+  /*changes the styles when is active or hover*/
+  color: white;
+  border-bottom: 5px solid white;
+}
+
+.main-nav__item--cta {
+  /*applies an animation between styles. This is a shorthand for animation-name, animation-duration, animation-timing-function, animation-delay, 
+  animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.*/
+  animation: wiggle 400ms 3s 8 ease-out none;
+}
+
+.main-nav__item--cta a,
+.mobile-nav__item--cta a {
+  color: white;
+  background: #ff1b68;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active,
+.mobile-nav__item--cta a:hover,
+.mobile-nav__item--cta a:active {
+  color: #ff1b68;
+  background: white;
+  border: none;
+}
+
+/*Media queries let you adapt your site or app depending on the presence or value of various device characteristics and parameters.*/
+@media (min-width: 40rem) {
+  /*when the min width of the viewport is 40rem, then our toggle buttom (hamburger) disappears and the main-nav is displayed as flex */
+  .toggle-button {
+    display: none;
+  }
+
+  .main-nav {
+    display: flex;
+  }
+}
+
+.main-footer {
+  background: black;
+  padding: 2rem;
+  margin-top: 3rem;
+  /* grid-row: 3 / 4; */
+  grid-area: footer; /*its displayed in the footer grid-area (bottom)*/
+}
+
+.main-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /*sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).
+  In this case, the elements will be displayed as columns*/
+  align-items: center;
+}
+
+.main-footer__link {
+  margin: 0.5rem 0;
+}
+
+.main-footer__link a {
+  color: white;
+  text-decoration: none;
+}
+
+/*when a link of the footer is on hover or active state, then puts the text color #ccc*/
+.main-footer__link a:hover,
+.main-footer__link a:active {
+  color: #ccc;
+}
+
+/*when displayed, appears from left to right*/
+.mobile-nav {
+  /*transform allows you to rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.*/
+  transform: translateX(-100%);
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 80%;
+  height: 100vh;
+  /*transition is a is a shorthand property for transition-property, transition-duration, transition-timing-function, and transition-delay.*/
+  transition: transform 300ms ease-out;
+}
+
+.mobile-nav__items {
+  width: 90%;
+  height: 100%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  /*sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).
+  in this case, are displayed as columns*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-nav__item {
+  margin: 1rem 0;
+}
+
+.mobile-nav__item a {
+  font-size: 1.5rem;
+}
+
+.button {
+  background: #0e4f1f;
+  color: white;
+  font: inherit;
+  border: 1.5px solid #0e4f1f;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  background: white;
+  color: #0e4f1f;
+}
+
+.button:focus {
+  outline: none;
+}
+
+/*attribute selector. Matches elements based on the presence or value of a given attribute
+In this case, matches the elements with button class elements that are disabled */
+.button[disabled] {
+  cursor: not-allowed; /*for cursor not-allowed: The requested action will not be carried out.*/
+  border: #a1a1a1;
+  background: #ccc;
+  color: #a1a1a1;
+}
+
+.open {
+  /*The !important rule in CSS is used to add more importance to a property/value than normal*/
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/*Media queries let you adapt your site or app depending on the presence or value of various device characteristics and parameters.*/
+/*when the viewport has a 40rem width, then the footer link will be displayed as rows*/
+@media (min-width: 40rem) {
+  .main-footer__link {
+    margin: 0 1rem;
+  }
+
+  .main-footer__links {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/*controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. */
+@keyframes wiggle {
+  0% {
+    transform: rotateZ(0);
+  }
+  50% {
+    transform: rotateZ(-10deg);
+  }
+  100% {
+    transform: rotateZ(10deg);
+  }
+}
