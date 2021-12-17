@@ -1,0 +1,241 @@
+/*element that contains our image header*/
+#product-overview {
+  /*the next line is a shorthand that contains all the properties commented in this block*/
+  /*the order of the property values is: background-color, background-image, background-position, background-size, background-repeat, background-origin, background-clip, background-attachment
+  It does not matter if one of the property values is missing, as long as the other ones are in this order.*/
+  background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent),
+    url("images/freedom.jpg") center/cover no-repeat border-box, #ff1b68;
+  /* background-image: url("freedom.jpg");
+    background-size: cover;
+    background-position: left 10% bottom 20%; */
+  /* background-repeat: no-repeat;
+    background-origin: border-box;
+    background-clip: border-box; */
+  /* background-image: linear-gradient(180deg, red 70%, blue 60%, rgba(0,0,0,0.5)); */
+  /* background-image: radial-gradient(ellipse farthest-corner at 20% 50%, red, blue 70%, green); */
+  width: 100vw; /*uses 100% of viewport width*/
+  height: 33vh; /*uses 33% of viewport height*/
+  /*
+  Position: Relative
+  The element is positioned according to the normal flow of the document, and then offset relative to itself based on the values of top, right, bottom, and left. 
+  The offset does not affect the position of any other elements; thus, the space given for the element in the page layout is the same as if position were static.
+  This value creates a new stacking context when the value of z-index is not auto. 
+  */
+  position: relative;
+}
+
+#product-overview h1 {
+  color: white;
+  font-family: "Anton", sans-serif; /*Uses the font family 'Anton' which are imported in shared styles. if it can't use this font, then uses sans-serif family located in browser*/
+  position: absolute; /*The element is removed from the normal document flow, and no space is created for the element in the page layout. 
+  It is positioned relative to its closest positioned ancestor (product-overview in this case), if any; otherwise, it is placed relative to the initial containing block. 
+  Its final position is determined by the values of top, right, bottom, and left. This value creates a new stacking context when the value of z-index is not auto.*/
+  bottom: 5%;
+  left: 3%;
+  font-size: 1.6rem;
+}
+
+/*Media queries let you adapt your site or app depending on the presence or value of various device characteristics and parameters.*/
+@media (min-width: 40rem) and (min-height: 40rem) {
+  /*when viewport has min-width: 40rem and min-height: 40rem, then the following styles are applied*/
+  #product-overview {
+    height: 40vh;
+    background-position: 50% 25%; /*sets the initial position for a background image. The position is relative to the position layer*/
+  }
+
+  #product-overview h1 {
+    font-size: 3rem;
+  }
+}
+
+.section-title {
+  color: #2ddf5c;
+  text-align: center;
+}
+
+.plan {
+  background: #d5ffdc;
+  text-align: center;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.plan--highlighted {
+  background: #19b84c;
+  color: white;
+}
+
+.plan__annotation {
+  background: white;
+  color: #19b84c;
+  padding: 0.5rem;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5); /* adds shadow effects around an element's frame*/
+  border-radius: 8px;
+}
+
+.plan__title {
+  color: #0e4f1f;
+}
+
+.plan__price {
+  color: #858585;
+}
+
+.plan--highlighted .plan__title {
+  color: white;
+}
+
+.plan--highlighted .plan__price {
+  color: #0e4f1f;
+}
+
+.plan__features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.plan__feature {
+  margin: 0.5rem 0;
+}
+
+/*Media queries let you adapt your site or app depending on the presence or value of various device characteristics and parameters.*/
+@media (min-width: 40rem) {
+  .plan__list {
+    width: 100%;
+    display: flex; /*The element behaves like a block element and lays out its content according to the flexbox model.*/
+    justify-content: center;
+    align-items: center;
+  }
+
+  .plan {
+    width: 30%;
+    min-width: 13rem;
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column; /*sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).*/
+    justify-content: space-between; /*defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.*/
+    height: 28rem;
+  }
+
+  .plan--highlighted {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    height: 30rem;
+    z-index: 50; /*The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+    Overlapping elements with a larger z-index cover those with a smaller one.*/
+  }
+}
+
+#key-features {
+  background: #ff1b68;
+  margin-top: 5rem;
+  padding: 1rem;
+}
+
+#key-features .section-title {
+  color: white;
+  margin: 2rem;
+}
+
+.key-feature__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.key-feature__image {
+  background: #ffcede;
+  width: 128px;
+  height: 128px;
+  border: 2px solid #424242; /*border shorthand. Sets an element's border. It sets the values of border-width, border-style, and border-color.*/
+  border-radius: 50%; /*rounds the corners of an element's outer border edge.*/
+  margin: auto; /*The browser selects a suitable margin to use. For example, in certain cases this value can be used to center an element.*/
+  padding: 1.5rem;
+}
+
+.key-feature__description {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/*Media queries let you adapt your site or app depending on the presence or value of various device characteristics and parameters.*/
+@media (min-width: 40rem) {
+  .key-feature {
+    width: 30%;
+    max-width: 25rem; /*sets the maximum width of an element. It prevents the used value of the width property from becoming larger than the value specified by max-width.*/
+  }
+
+  .key-feature__list {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* h1 {
+    font-family: sans-serif;
+} */
+
+/*Position: Fixed
+The element is removed from the normal document flow, and no space is created for the element in the page layout. 
+It is positioned relative to the initial containing block established by the viewport. This value always creates a new stacking context.*/
+.modal {
+  position: fixed;
+  opacity: 0; /*sets the opacity of an element. by default its 0 (not visible) because it turns visible when modal opens*/
+  /*transform property allows you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.*/
+  transform: translateY(
+    -3rem
+  ); /*repositions an element vertically on the 2D plane*/
+  /*transition is a shorthand property for transition-property, transition-duration, transition-timing-function, and transition-delay.*/
+  transition: opacity 200ms ease-out,
+    /*ease-out starts transitioning quickly, slowing down the transition continues. •*/
+      transform 500ms cubic-bezier(0.55, 0.055, 0.675, 0.19); /*defines a Cubic Bezier curve (time).*/
+  z-index: 200;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.modal__title {
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+.modal__actions {
+  text-align: center;
+}
+
+.modal__action {
+  border: 1px solid #0e4f1f;
+  background: #0e4f1f;
+  text-decoration: none;
+  color: white;
+  font: inherit;
+  padding: 0.5rem 1rem;
+  cursor: pointer; /*sets the mouse cursor*/
+}
+
+/*A pseudo-class is a selector that selects elements that are in a specific state,*/
+.modal__action:hover,
+.modal__action:active {
+  background: #2ddf5c;
+  border-color: #2ddf5c;
+}
+
+.modal__action--negative {
+  background: red;
+  border-color: red;
+}
+
+.modal__action--negative:hover,
+.modal__action--negative:active {
+  background: #ff5454;
+  border-color: #ff5454;
+}

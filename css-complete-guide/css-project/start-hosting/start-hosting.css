@@ -1,0 +1,102 @@
+main {
+  padding-top: 1rem;
+}
+
+/*the next class selectors are for the title (label) of each input of our form*/
+.signup-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #ff5454;
+}
+
+.signup-form {
+  /*display our signup form as grid, */
+  padding: 1rem;
+  display: grid;
+  grid-auto-rows: 2rem; /*specifies the size of an implicitly-created grid row track or pattern of tracks.
+    in this case. each row is 2rem*/
+  grid-row-gap: 0.5rem; /*spaces between each row*/
+}
+
+.signup-form label {
+  font-weight: bold;
+}
+
+.signup-form label,
+.signup-form input,
+.signup-form select {
+  display: block;
+  width: 100%;
+}
+
+/* .signup-form input[type="checkbox"] */
+.signup-form input[id*="terms"],
+.signup-form input[id*="terms"] + label {
+  display: inline-block;
+  width: auto;
+  vertical-align: bottom;
+}
+
+.signup-form input:not([type="checkbox"]),
+.signup-form select {
+  border: 1px solid #ccc;
+  padding: 0.2rem 0.5rem;
+  font: inherit;
+}
+
+.signup-form input:focus,
+.signup-form select:focus {
+  outline: none;
+  background: #d8f3df;
+  border-color: #2ddf5c;
+}
+
+/*here we are customizing the style checkbox*/
+.signup-form input[type="checkbox"] {
+  border: 1px solid #ccc;
+  background: white;
+  width: 1rem;
+  height: 1rem;
+  -webkit-appearance: none; /*here we are removing the default style of our checkbox*/
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.signup-form input[type="checkbox"]:checked {
+  background: #2ddf5c;
+  border: #0e4f1f;
+}
+
+/*if any input value of our form has invaild text, then we turn our style to invalid
+puting the borders red to highlight our inpur*/
+.signup-form input.invalid,
+.signup-form select.invalid,
+.signup-form :invalid {
+  border-color: red !important; /*using !important to override any other declarations. this has the highest priority in our style */
+  background: #faacac;
+}
+
+.signup-form button[type="submit"] {
+  display: block;
+}
+
+/*if the viewports min width is 40rem then the signup form will be displayed with two columns */
+@media (min-width: 40rem) {
+  .signup-form {
+    margin: auto;
+    width: 30rem;
+    grid-template-columns: 10rem auto;
+    grid-row-gap: 1rem;
+    grid-column-gap: 0.5rem;
+  }
+
+  /*the signup form title will be displayed using 2 column spaces
+     the same for our signup form checkbox*/
+  .signup-form [id="title"] {
+    grid-column: span 2;
+  }
+
+  .signup-form__checkbox {
+    grid-column: span 2;
+  }
+}

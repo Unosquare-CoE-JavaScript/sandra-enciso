@@ -1,0 +1,171 @@
+/*@font-face specifies a custom font with which to display text; the font can be loaded from either a remote server or a locally-installed font on the user's own computer.
+in this case, we have our files in the same directory, so we load the font using url*/
+@font-face {
+  font-family: "AnonymousPro";
+  src: url("anonymousPro-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AnonymousPro";
+  src: url("anonymousPro-Bold.ttf");
+  font-weight: 700; /*when */
+}
+
+main {
+  padding-top: 2rem;
+}
+
+.background {
+  background: url("../images/plans-background.jpg") center/cover; /*position center, and size cover: */
+  filter: grayscale(
+    40%
+  ); /*applies graphical effects like blur or color shift to an element.*/
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+}
+/* z-index sets the z-order of a positioned element and its descendants or flex items.
+  Overlapping elements with a larger z-index cover those with a smaller one. 
+  Adding z-index to elements which dont have any position property applied (position with a value different from static) the z-index doesnt have any impact*/
+
+.package {
+  width: 80%;
+  margin: 1rem 0;
+  border: 4px solid #0e4f1f;
+  border-left: none;
+  position: relative; /*sets how an element is positioned in a document.*/
+  overflow: hidden; /*sets the desired behavior for an element's overflow. In this case, when a children element is too big to this container,
+  then the remaining part of the children that doesnt fix with the container is hidden */
+}
+
+.package:hover,
+.package:active {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-color: #ff5454;
+  /* border-color: #ff5454 !important; */
+  animation: push-up 1s ease-out forwards;
+}
+
+.package a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 2rem;
+}
+
+.package__badge {
+  position: absolute; /*The element is removed from the normal document flow, and no space is created for the element in the page layout.
+  The position context is .package which is the parent of this element and has position property*/
+  top: 0;
+  right: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  color: white;
+  background: #ff5454;
+  padding: 0.5rem;
+  transform: rotate(45deg) translate(3.5rem, -1rem);
+  transform-origin: center;
+  width: 12rem;
+  text-align: center;
+}
+/*Transform allows you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.*/
+
+/*For absolutely positioned elements, the positioning context is defined
+based on two cases:
+if none of the ancestors, has a position property applied, then the positioning
+context of the element is simply the HTML element
+If we have any position ancestor, then the closest ancestor which has the
+position property applied is the positioning context for this element*/
+
+.package__subtitle {
+  color: #979797;
+}
+
+.package__info {
+  padding: 1rem;
+  border: 1px solid #0e4f1f;
+  color: #0e4f1f;
+  background: white;
+  font-size: 1.2rem;
+  /* font-style font-variant font-weight font-size/line-height font-family*/
+}
+
+.clearfix {
+  clear: both;
+  /*sets whether an element must be moved below (cleared) floating elements that precede it.
+  The clear property applies to floating and non-floating elements.*/
+}
+
+#plus {
+  background: rgba(213, 255, 220, 0.95);
+}
+
+#free {
+  background: rgba(234, 252, 237, 0.95);
+  float: right; /*places an element on the left or right side of its container, allowing text and inline elements to wrap around it. 
+  The element is removed from the normal flow of the page, though still remaining a part of the flow (in contrast to absolute positioning).  */
+  border-right: none;
+  border-left: 4px solid #0e4f1f;
+  text-align: right;
+}
+
+#free:hover,
+#free:active {
+  border-left-color: #ff5454;
+}
+
+#premium {
+  background: rgba(14, 79, 31, 0.95);
+}
+
+#premium .package__title {
+  color: white;
+}
+
+#premium .package__subtitle {
+  color: #bbb;
+}
+
+/*if the actual viewport has 40rem as min width, then applies these styles*/
+@media (min-width: 40rem) {
+  main {
+    max-width: 1500px; /*the max width of our main element is 1500px*/
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*if the actual viewport has 1500px as min width, then applies these styles*/
+@media (min-width: 1500px) {
+  .package {
+    border-left: 4px solid #0e4f1f;
+  }
+
+  #free {
+    border-right: 4px solid #0e4f1f;
+  }
+
+  #free:hover, /*if the element with 'free' id has the hover or active state, then applies this style*/
+  #free:active {
+    border-right-color: #ff5454;
+  }
+}
+
+/*Controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence.*/
+@keyframes push-up {
+  0% {
+    /*initial state*/
+    transform: translateY(0);
+  }
+
+  33% {
+    /*33% state*/
+    transform: translateY(-1.5rem);
+  }
+
+  100% {
+    /*final state*/
+    transform: translateY(-1rem);
+  }
+}

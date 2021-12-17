@@ -1,0 +1,11 @@
+/* shared variables  */
+/* we can store a map in a variable, like in the case of the $colors variable, and then recover any value of the map variable using map-get($variable, key); 
+like in the case of the $border-default variable. 
+Another thing to notice is that in the $ border-default variable we are storing a set of values, these will be used to apply them to border property */
+$colors: (
+  main: #521751,
+  secondary: #fa923f,
+);
+$size-default: 1rem;
+$size-tiny: 0.2rem;
+$border-default: math.div($size-tiny, 4) solid map-get($colors, main); //$size-tiny divided by 4
